@@ -8,16 +8,26 @@
 // import { NumberedList } from './components/layout/lists/numberedList';
 // import { SmallProduct } from './components/layout/lists/products/smallProduct';
 // import { LargeProduct } from './components/layout/lists/products/largeProduct';
+import axios from 'axios';
 
 import { CurrentUserLoader } from './components/container/loadCurrentUser';
+import { UserLoader } from './components/container/userLoader';
 import { UserInfo } from './components/container/userInfo';
+import { ResourceLoader } from './components/container/resourceLoader';
+import { ProductInfo } from './components/container/productInfo';
+import { DataSource } from './components/container/dataSource';
+
+const getServerData = (url) => async () => {
+	const response = await axios.get(url);
+	return response.data;
+};
 
 function App() {
 	return (
 		<div className="App">
-			<CurrentUserLoader>
+			<DataSource getData={getServerData('/users/123')} resourceName="user">
 				<UserInfo />
-			</CurrentUserLoader>
+			</DataSource>
 		</div>
 	);
 }
