@@ -11,3 +11,5 @@ UNCONTROLLED COMPONENTS: Components that keep track of their own states and rele
 CONTROLLED COMPONENTS: Components that receives states through props that are passed from their parent component. They are easier to test and reuseable.
 
 HIGHER ORDER COMPONENTS: Components that are composed of other components i.e returns other components instead of JSX.
+
+CUSTOM HOOKS: Hooks defined to combine the functionality of one or more already existing react hooks.

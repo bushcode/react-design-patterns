@@ -16,23 +16,29 @@ import { UserInfo } from './components/container/userInfo';
 import { ResourceLoader } from './components/container/resourceLoader';
 import { ProductInfo } from './components/container/productInfo';
 import { DataSource } from './components/container/dataSource';
+import { withUser } from './components/HOCs/withUser';
+import { UserInfoForm } from './components/HOCs/userInfoForm';
 
 const getServerData = (url) => async () => {
 	const response = await axios.get(url);
 	return response.data;
 };
 
+const UserInfoWithLoader = withUser(UserInfo, '234');
+
 function App() {
 	return (
 		<div className="App">
-			<DataSource getData={getServerData('/users/123')} resourceName="user">
-				<UserInfo />
-			</DataSource>
+			<UserInfoForm />
 		</div>
 	);
 }
 
 export default App;
+
+// <DataSource getData={getServerData('/users/123')} resourceName="user">
+// 	<UserInfo />
+// </DataSource>;
 
 /* <RegularList items={people} resourceName="person" itemComponent={SmallPerson} />
 			<RegularList items={people} resourceName="person" itemComponent={LargePerson} /> 
